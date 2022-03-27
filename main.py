@@ -1,24 +1,20 @@
 def file_reader(): 
     cook_book = {} 
     with open('Recipies.txt', 'r', encoding='utf-8') as file: 
-        while True:
+        while True: 
             dish_name = file.readline().strip() 
-            cook_book[dish_name] = [] 
+            if not dish_name: 
+                break 
             qwnty_ingr = int(file.readline()) 
             r = [] 
-            for i in range(qwnty_ingr):  
+            for i in range(qwnty_ingr): 
                 line = file.readline().strip() 
-                spl = line.split('|')
-                res = {'ingredient_name': spl[0], 'quantity' : int(spl[1]), 'measure': spl[2]} 
-                r.append(res)
-            file.readline()
-            cook_book[dish_name] = r
-            
-            break
-        
-             
-        return(cook_book) 
-        
+                spl = line.split(' | ') 
+                r.append({'ingredient_name': spl[0], 'quantity' : int(spl[1]), 'measure': spl[2]}) 
+            file.readline() 
+            cook_book[dish_name] = r 
+    return(cook_book)  
+         
 print(file_reader())
 
 #def ingr_format():
