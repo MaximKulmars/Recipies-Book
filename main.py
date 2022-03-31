@@ -1,4 +1,3 @@
-# читаем файл
 def read_file(file_):
     lines_ = []
     for line in file_:
